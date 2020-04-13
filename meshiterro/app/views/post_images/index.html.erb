@@ -20,6 +20,7 @@
                   <%= link_to post_image_path(post_image.id) do %>
                   <%= attachment_image_tag post_image, :image %>
                   <% end %>
+
                 </h3>
                 <p><%= post_image.caption %></p>
                 <ul class="inline-meta">
@@ -27,13 +28,14 @@
                     <%= post_image.user.name %>
                   </li>
                   <li>
-                    <a href="#">23 コメント</a>
+                    <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           <% end %>
+          <%= paginate @post_images, class: "paginate" %>
         </div>
       </div>
     </div>
